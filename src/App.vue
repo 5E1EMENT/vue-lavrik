@@ -16,7 +16,7 @@
       <button type="button" class="btn btn-primary mt-10" @click="addGuest">+</button>
       <ul>
         <li v-for="(guest, key) in guests" :key="key">
-          <label for="guest" @click="deleteGuest">Гость  {{key + 1}} </label>
+          <label for="guest" @click="deleteGuest(key)">Гость  {{key + 1}} </label>
           <input type="text" id="guest" class="form-control" v-model="guests[key]">
         </li>
       </ul>
@@ -75,8 +75,8 @@ export default {
     addGuest () {
       this.guests.push('')
     },
-    deleteGuest () {
-      this.guests.pop()
+    deleteGuest (index) {
+      this.guests.splice(index,1)
     }
   },
   computed: {
